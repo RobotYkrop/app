@@ -10,6 +10,7 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const fetchUsers = useCallback(async () => {
+    if (loading) return;
     setLoading(true);
     try {
       const response = await fetch(
