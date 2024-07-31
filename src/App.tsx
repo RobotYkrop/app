@@ -3,14 +3,38 @@ import UserCard from "./components/user-card";
 import { UserModelData } from "./libs/models/user-models/userModelsData";
 import VirtualizedList from "./components/user-list/VirtualizedList";
 import "./App.css";
-
-const App: React.FC = () => {
+/**
+ * Main App component that fetches and displays a list of users with virtualization.
+ */
+const App = () => {
+  /**
+   * State for storing fetched users.
+   */
   const [users, setUsers] = useState<UserModelData[]>([]);
+
+  /**
+   * State for storing the current page number for pagination.
+   */
   const [page, setPage] = useState(1);
+
+  /**
+   * State for tracking the loading status of fetch requests.
+   */
   const [loading, setLoading] = useState(false);
 
+  /**
+   * Fetches a list of users from the API.
+   *
+   * This function sends a request to the API to fetch user data for the specified page.
+   * It updates the state with the new list of users and handles loading state.
+   *
+   * @async
+   * @function
+   * @param {number} page - The page number to fetch.
+   * @returns {Promise<void>} A promise that resolves when the fetch is complete.
+   */
   const fetchUsers = useCallback(async () => {
-    if (loading) return;
+    if (loading) return; // Prevent multiple requests if already loading or no more data
     setLoading(true);
     try {
       const response = await fetch(
@@ -28,7 +52,10 @@ const App: React.FC = () => {
   useEffect(() => {
     fetchUsers();
   }, [fetchUsers]);
-
+  
+  /**
+   * Handle scroll event to load more users when nearing the bottom of the page.
+   */
   useEffect(() => {
     const handleScroll = () => {
       if (
@@ -46,6 +73,10 @@ const App: React.FC = () => {
     };
   }, [loading]);
 
+  /**
+   * Render a user item.
+   * @param {UserModelData} user - The user data to render.
+   */
   const renderItem = (user: UserModelData) => (
     <UserCard key={user.email} user={user} />
   );

@@ -1,6 +1,18 @@
-import { memo } from "react";
+import React, { memo } from "react";
 import { UserModelData } from "../../libs/models/user-models/userModelsData";
 import "./UserCard.css";
+/**
+ * UserCard component displays information about a single user.
+ *
+ * @component
+ * @example
+ * // Example usage
+ * <UserCard user={{ email: 'example@example.com', name: 'John Doe' }} />
+ *
+ * @param {Object} props - The properties passed to the component.
+ * @param {UserModelData} props.user - The user data to display.
+ * @returns {React.Element} The rendered UserCard component.
+ */
 
 interface UserProps {
   user: UserModelData;

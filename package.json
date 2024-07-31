@@ -4,7 +4,9 @@
   "scripts": {
     "dev": "vite --host --port 3010",
     "build": "vite build",
-    "serve": "vite preview --host --port 3010"
+    "serve": "vite preview --host --port 3010",
+    "docs": "jsdoc -c ./.jsdoc.conf.json --pedantic",
+    "lint": "eslint ."
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8",
@@ -24,6 +26,7 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "imagemin": "^9.0.0",
     "imagemin-mozjpeg": "^10.0.0",
+    "jsdoc": "^4.0.3",
     "prettier": "^3.3.3",
     "typescript": "^5.5.4",
     "vite": "^5.3.5",
