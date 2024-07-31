@@ -1,0 +1,16 @@
+.virtualized-list {
+  width: 100%;
+}
+
+.virtualized-list-container {
+  position: relative;
+  width: 100%;
+}
+
+.virtualized-list-item {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
